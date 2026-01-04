@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=DM+Mono:wght@300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-deep-purple text-white font-mono;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  /* Scanline Effect */
+  .scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* Pixel Border Style */
+  .pixel-border {
+    @apply border-4;
+    image-rendering: pixelated;
+  }
+
+  /* Neon Glow Text */
+  .neon-text {
+    text-shadow:
+      0 0 10px currentColor,
+      0 0 20px currentColor,
+      0 0 30px currentColor;
+  }
+
+  /* 8-bit Button */
+  .btn-primary {
+    @apply bg-neon-lime text-black font-pixel text-xs px-6 py-3 pixel-border border-neon-lime;
+    @apply hover:shadow-neon transition-all duration-200;
+    @apply active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent text-white font-pixel text-xs px-6 py-3 pixel-border border-white;
+    @apply hover:bg-white hover:text-deep-purple transition-all duration-200;
+  }
+
+  .btn-danger {
+    @apply bg-neon-orange text-black font-pixel text-xs px-6 py-3 pixel-border border-neon-orange;
+    @apply hover:shadow-neon transition-all duration-200;
+  }
+
+  /* Card Styles */
+  .card {
+    @apply bg-charcoal pixel-border border-gray-600 p-6 rounded-none;
+  }
+
+  .card-active {
+    @apply card border-neon-lime shadow-neon-sm;
+  }
+
+  /* Progress Bar */
+  .progress-bar {
+    @apply w-full h-4 bg-dark-navy pixel-border border-gray-600;
+  }
+
+  .progress-fill {
+    @apply h-full bg-neon-lime;
+    image-rendering: pixelated;
+  }
+}
+
+@layer utilities {
+  /* 8px Grid System */
+  .grid-8 {
+    display: grid;
+    gap: 8px;
+  }
+
+  .p-8 {
+    padding: 8px;
+  }
+
+  .m-8 {
+    margin: 8px;
+  }
+}
